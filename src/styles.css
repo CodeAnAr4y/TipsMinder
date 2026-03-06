@@ -1,1 +1,64 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com');
+@import 'tailwindcss';
+
+@theme {
+  /* common pallette (brand) */
+  --color-brand-orange: #fb8f42;
+  --color-brand-orange-light: #ffb682;
+  --color-brand-orange-deep: #f1804f;
+  --color-brand-peach: #eec595;
+  --color-brand-sand: #edd098;
+
+  /* neutral colors */
+  --color-ui-black: #121212;
+  --color-ui-dark-grey: #2c2c2c;
+  --color-ui-grey-41: #414141;
+  --color-ui-grey-47: #474747;
+  --color-ui-grey-56: #565656;
+  --color-ui-grey-light: #dddddd;
+  --color-ui-white-dark: #fdfdfd;
+  --color-ui-white-pure: #ffffff;
+  --color-ui-white-soft: #fafafa;
+  --color-ui-white-f9: #f9f9f9;
+
+  /* statuses */
+  --color-status-error: #da3e52;
+  --color-status-error-bg: #fbecee;
+  --color-status-error-light: #fff9f9;
+  --color-status-success: #048a81;
+  --color-status-success-bg: #ecf8f7;
+
+  /* gradients */
+  --background-image-brand-gradient: linear-gradient(
+    128deg,
+    #eec595 0%,
+    #f1804f 50%,
+    #edd098 100%
+  );
+
+  /* typography */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer components {
+  .btn-gradient {
+    @apply bg-brand-gradient text-white font-medium py-2 px-6 rounded-lg transition-opacity hover:opacity-90;
+  }
+
+  .card-container {
+    @apply bg-white border border-[--color-ui-grey-light] rounded-xl shadow-sm p-6;
+  }
+
+  .input-field {
+    @apply w-full border border-[--color-ui-grey-light] rounded-md px-3 py-2 focus:ring-2 focus:ring-[--color-brand-orange] outline-none transition-all;
+  }
+
+  .table-row-hover {
+    @apply hover:bg-[--color-ui-white-soft] transition-colors border-b border-[--color-ui-grey-light];
+  }
+
+  button,
+  a {
+    @apply hover:cursor-pointer;
+  }
+}
