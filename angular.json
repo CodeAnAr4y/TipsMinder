@@ -79,5 +79,9 @@
         }
       }
     }
+  }, "schematics": {
+    "@schematics/angular:service": {
+      "type": "service"
+    }
   }
 }
