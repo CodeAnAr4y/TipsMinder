@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -13,12 +15,13 @@
   --color-ui-black: #121212;
   --color-ui-dark-grey: #2c2c2c;
   --color-ui-grey-4d: #4d4d4d;
-  --color-ui-grey-47: #474747;
+  --color-ui-stroke: #d6d6d6;
+  --color-ui-white-soft: #fafafa;
+
   --color-ui-grey-56: #565656;
   --color-ui-grey-light: #c0c0c0;
   --color-ui-white-dark: #fdfdfd;
   --color-ui-white-pure: #ffffff;
-  --color-ui-white-soft: #fafafa;
   --color-ui-white-f9: #f9f9f9;
 
   /* statuses */
@@ -32,7 +35,8 @@
   --background-image-brand-gradient: linear-gradient(128deg, #eec595 0%, #f1804f 50%, #edd098 100%);
 
   /* typography */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-inter: 'Inter', sans-serif;
 
   /* size vars */
   --content-width-xl: 80rem;
@@ -52,6 +56,10 @@
 
   nav a {
     @apply hover:text-brand-orange;
+  }
+
+  h1 {
+    @apply font-semibold text-xl md:text-2xl lg:text-3xl text-ui-dark-grey leading-snug mb-8;
   }
 
   .bg-brand-gradient button {
@@ -81,5 +89,10 @@
   }
   .narrow-wrapper {
     @apply mx-auto w-full max-w-(--content-width-xl) lg:max-w-(--content-width-lg) md:max-w-(--content-width-md) sm:max-w-(--content-width-sm) px-4;
+  }
+
+  /* content-modules */
+  .module {
+    @apply relative w-full border rounded-[10px] border-ui-stroke p-4 md:p-8 bg-ui-white-soft;
   }
 }
