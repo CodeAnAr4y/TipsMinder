@@ -1,22 +1,68 @@
-<header class="wrapper flex items-center justify-between py-3 border-b border-ui-grey-light">
-  <a href="/" class="font-semibold flex items-center gap-2">
-    <img class="h-8" src="icons/favicon.svg" alt="FAV" />
+<header
+  class="wrapper relative z-50 flex items-center justify-between py-2 md:py-3 border-b border-ui-grey-light bg-white"
+>
+  <!-- Logo -->
+  <a routerLink="/" class="z-50 font-semibold flex items-center gap-2">
+    <img class="h-7 md:h-8" src="icons/favicon.svg" alt="FAV" />
     <span class="text-base">TipMinder</span>
   </a>
-  <nav class="font-medium flex items-center justify-center gap-8">
-    <a href="#">About</a>
-    <a href="#">General condition</a>
-    <a href="#">Price list</a>
-    <a href="#">FAQ</a>
-    <a href="#">Contacts</a>
+
+  <!-- Desktop Nav -->
+  <nav class="hidden md:flex font-medium items-center gap-4 lg:gap-8">
+    <a routerLink="#">About</a>
+    <a routerLink="#">General condition</a>
+    <a routerLink="#">Price list</a>
+    <a routerLink="#">FAQ</a>
+    <a routerLink="#">Contacts</a>
   </nav>
-  <div
-    class="relative font-semibold flex items-center bg-brand-gradient rounded-[10px] overflow-hidden"
-  >
-    <button class="px-4 py-3 pe-3">
-      <img src="icons/user.svg" alt="Profile" />
+
+  <!-- Right Block -->
+  <div class="flex items-center gap-2 md:gap-4">
+    <div class="flex items-center bg-brand-gradient rounded-lg overflow-hidden font-semibold">
+      <button class="p-2 md:px-4 md:py-3 md:pe-3">
+        <img class="w-5 h-5 md:w-6 md:h-6" src="icons/user.svg" alt="Profile" />
+      </button>
+      <div class="hidden md:block w-px h-12 bg-white"></div>
+      <button class="hidden md:block px-4 py-3 ps-3 text-white text-sm">Log Out</button>
+    </div>
+
+    <!-- Burger Button -->
+    <button
+      (click)="toggleMenu()"
+      class="md:hidden p-2 z-50 transition-transform duration-300"
+      [class.rotate-90]="isMenuOpen()"
+    >
+      @if (isMenuOpen()) {
+      <img src="icons/close.svg" alt="x" />
+      } @else {
+      <img src="icons/burger.svg" alt="Menu" />
+      }
     </button>
-    <div class="w-px h-12 bg-white"></div>
-    <button class="px-4 py-3 ps-3 text-white">Log Out</button>
+  </div>
+
+  <!-- Mobile Overlay -->
+  <div
+    class="fixed inset-0 bg-white z-40 flex flex-col pt-20 px-8 gap-6 transition-all duration-300 md:hidden"
+    [class.opacity-0]="!isMenuOpen()"
+    [class.pointer-events-none]="!isMenuOpen()"
+    [class.translate-x-full]="!isMenuOpen()"
+  >
+    <a (click)="isMenuOpen.set(false)" routerLink="#" class="text-xl font-medium border-b pb-2"
+      >About</a
+    >
+    <a (click)="isMenuOpen.set(false)" routerLink="#" class="text-xl font-medium border-b pb-2"
+      >General condition</a
+    >
+    <a (click)="isMenuOpen.set(false)" routerLink="#" class="text-xl font-medium border-b pb-2"
+      >Price list</a
+    >
+    <a (click)="isMenuOpen.set(false)" routerLink="#" class="text-xl font-medium border-b pb-2"
+      >FAQ</a
+    >
+    <a (click)="isMenuOpen.set(false)" routerLink="#" class="text-xl font-medium border-b pb-2"
+      >Contacts</a
+    >
+
+    <button class="mt-4 bg-brand-gradient text-white py-4 rounded-xl font-bold">Log Out</button>
   </div>
 </header>
