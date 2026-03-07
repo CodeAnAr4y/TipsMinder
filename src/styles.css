@@ -16,7 +16,9 @@
   --color-ui-dark-grey: #2c2c2c;
   --color-ui-grey-4d: #4d4d4d;
   --color-ui-stroke: #d6d6d6;
+  --color-ui-input-stroke: #d5d5d5;
   --color-ui-white-soft: #fafafa;
+  --color-ui-grey-41: #414141;
 
   --color-ui-grey-56: #565656;
   --color-ui-grey-light: #c0c0c0;
@@ -37,6 +39,7 @@
   /* typography */
   --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
   --font-inter: 'Inter', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
 
   /* size vars */
   --content-width-xl: 80rem;
@@ -64,6 +67,11 @@
 
   .bg-brand-gradient button {
     @apply hover:bg-white/10 active:bg-white/20;
+  }
+
+  /* Forms */
+  label {
+    @apply font-montserrat font-semibold text-ui-grey-41;
   }
 }
 
@@ -95,4 +103,10 @@
   .module {
     @apply relative w-full border rounded-[10px] border-ui-stroke p-4 md:p-8 bg-ui-white-soft;
   }
+
+  /* forms */
+  .input-error {
+    @apply border-status-error ring-1 ring-status-error focus:ring-status-error;
+  }
+  
 }

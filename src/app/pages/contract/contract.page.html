@@ -1,4 +1,172 @@
-<section>
-  <h1>Merchant agreement</h1>
-  <div class="module"></div>
+<section class="narrow-wrapper">
+  <h1 class="mb-6">Merchant agreement</h1>
+
+  <div class="module rounded-b-none">
+    <!-- Form -->
+    <form [formGroup]="contractForm" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+      <!-- Company name (Select) -->
+      <div class="flex flex-col gap-3">
+        <label class="text-[14px]">Company name</label>
+        <div class="relative">
+          <select
+            formControlName="companyName"
+            class="input-field appearance-none border-ui-input-stroke border-2 rounded-[10px] pr-10"
+            [class.input-error]="
+              contractForm.get('companyName')?.invalid && contractForm.get('companyName')?.touched
+            "
+          >
+            <option value="" disabled>Select company</option>
+            <option value="feastly">Feastly Delights</option>
+          </select>
+          <div
+            class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none border-t-4 border-t-ui-black border-x-4 border-x-transparent"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Terminal monthly fee (Select) -->
+      <div class="flex flex-col gap-3">
+        <label class="text-[14px]">Terminal monthly fee</label>
+        <div class="relative">
+          <select
+            formControlName="terminalMonthlyFee"
+            class="input-field appearance-none border-ui-input-stroke border-2 rounded-[10px] pr-10"
+            [class.input-error]="
+              contractForm.get('terminalMonthlyFee')?.invalid &&
+              contractForm.get('terminalMonthlyFee')?.touched
+            "
+          >
+            <option value="" disabled>Select fee</option>
+            <option value="2719271819">2719271819</option>
+          </select>
+          <div
+            class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none border-t-4 border-t-ui-black border-x-4 border-x-transparent"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Personal code -->
+      <div class="flex flex-col gap-3">
+        <label class="text-[14px]">Personal code</label>
+        <input
+          formControlName="personalCode"
+          type="text"
+          class="input-field border-ui-input-stroke border-2 rounded-[10px]"
+          placeholder="125091871"
+          [class.input-error]="
+            contractForm.get('personalCode')?.invalid && contractForm.get('personalCode')?.touched
+          "
+        />
+      </div>
+
+      <!-- Telephone number -->
+      <div class="flex flex-col gap-3">
+        <label class="text-[14px]">Telephone number</label>
+        <input
+          formControlName="telephoneNumber"
+          type="text"
+          class="input-field border-ui-input-stroke border-2 rounded-[10px]"
+          placeholder="909-569-6098"
+          [class.input-error]="
+            contractForm.get('telephoneNumber')?.invalid &&
+            contractForm.get('telephoneNumber')?.touched
+          "
+        />
+      </div>
+
+      <!-- Address -->
+      <div class="flex flex-col gap-3">
+        <label class="text-[14px]">Address</label>
+        <input
+          formControlName="address"
+          type="text"
+          class="input-field border-ui-input-stroke border-2 rounded-[10px]"
+          placeholder="229 Gordon Street..."
+          [class.input-error]="
+            contractForm.get('address')?.invalid && contractForm.get('address')?.touched
+          "
+        />
+      </div>
+
+      <!-- Bank account number -->
+      <div class="flex flex-col gap-3">
+        <label class="text-[14px]">Bank account number</label>
+        <input
+          formControlName="bankAccountNumber"
+          type="text"
+          class="input-field border-ui-input-stroke border-2 rounded-[10px]"
+          placeholder="BTO918282811291"
+          [class.input-error]="
+            contractForm.get('bankAccountNumber')?.invalid &&
+            contractForm.get('bankAccountNumber')?.touched
+          "
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="flex flex-col gap-3">
+        <label class="text-[14px]">Email</label>
+        <input
+          formControlName="email"
+          type="email"
+          class="input-field border-ui-input-stroke border-2 rounded-[10px]"
+          placeholder="jackson2_delight@gmal.com"
+          [class.input-error]="
+            contractForm.get('email')?.invalid && contractForm.get('email')?.touched
+          "
+        />
+      </div>
+
+      <!-- Date from -->
+      <div class="flex flex-col gap-3">
+        <label class="text-[14px]">Date from</label>
+        <input
+          formControlName="dateFrom"
+          type="date"
+          class="input-field border-ui-input-stroke border-2 rounded-[10px]"
+          [class.input-error]="
+            contractForm.get('dateFrom')?.invalid && contractForm.get('dateFrom')?.touched
+          "
+        />
+      </div>
+
+      <!-- Contract number (Select) -->
+      <div class="flex flex-col gap-3">
+        <label class="text-[14px]">Contract number</label>
+        <div class="relative">
+          <select
+            formControlName="contractNumber"
+            class="input-field appearance-none border-ui-input-stroke border-2 rounded-[10px] pr-10"
+            [class.input-error]="
+              contractForm.get('contractNumber')?.invalid &&
+              contractForm.get('contractNumber')?.touched
+            "
+          >
+            <option value="" disabled>Select contract number</option>
+            <option value="02929128119192189">02929128119192189</option>
+          </select>
+          <div
+            class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none border-t-4 border-t-ui-black border-x-4 border-x-transparent"
+          ></div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="module rounded-t-none border-t-0 mb-8 flex gap-4 font-semibold text-[14px]">
+    <button
+      (click)="onSubmit()"
+      class="bg-brand-orange text-white px-4 py-3 rounded-[5px] disabled:opacity-50 disabled:cursor-not-allowed"
+      [disabled]="contractForm.invalid"
+    >
+      Sign contract
+    </button>
+    <button
+      routerLink=".."
+      class="px-4 py-3 border border-ui-black rounded-[5px] font-medium hover:bg-ui-black/5 transition-colors"
+    >
+      Back
+    </button>
+  </div>
 </section>
