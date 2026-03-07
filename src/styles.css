@@ -12,10 +12,10 @@
   /* neutral colors */
   --color-ui-black: #121212;
   --color-ui-dark-grey: #2c2c2c;
-  --color-ui-grey-41: #414141;
+  --color-ui-grey-4d: #4d4d4d;
   --color-ui-grey-47: #474747;
   --color-ui-grey-56: #565656;
-  --color-ui-grey-light: #C0C0C0;
+  --color-ui-grey-light: #c0c0c0;
   --color-ui-white-dark: #fdfdfd;
   --color-ui-white-pure: #ffffff;
   --color-ui-white-soft: #fafafa;
@@ -36,7 +36,11 @@
 }
 
 @layer base {
-  a, button {
+  app-root {
+    @apply flex flex-col min-h-screen;
+  }
+  a,
+  button {
     @apply transition-all duration-200 cursor-pointer;
   }
 
@@ -68,6 +72,6 @@
 
   /* Containers */
   .wrapper {
-    @apply mx-auto px-8;
+    @apply w-full px-4 sm:px-8;
   }
 }
