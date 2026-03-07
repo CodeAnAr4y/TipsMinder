@@ -15,7 +15,7 @@
   --color-ui-grey-41: #414141;
   --color-ui-grey-47: #474747;
   --color-ui-grey-56: #565656;
-  --color-ui-grey-light: #dddddd;
+  --color-ui-grey-light: #C0C0C0;
   --color-ui-white-dark: #fdfdfd;
   --color-ui-white-pure: #ffffff;
   --color-ui-white-soft: #fafafa;
@@ -29,15 +29,24 @@
   --color-status-success-bg: #ecf8f7;
 
   /* gradients */
-  --background-image-brand-gradient: linear-gradient(
-    128deg,
-    #eec595 0%,
-    #f1804f 50%,
-    #edd098 100%
-  );
+  --background-image-brand-gradient: linear-gradient(128deg, #eec595 0%, #f1804f 50%, #edd098 100%);
 
   /* typography */
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  a, button {
+    @apply transition-all duration-200 cursor-pointer;
+  }
+
+  nav a {
+    @apply hover:text-brand-orange;
+  }
+
+  .bg-brand-gradient button {
+    @apply hover:bg-white/10 active:bg-white/20;
+  }
 }
 
 @layer components {
@@ -57,8 +66,8 @@
     @apply hover:bg-[--color-ui-white-soft] transition-colors border-b border-[--color-ui-grey-light];
   }
 
-  button,
-  a {
-    @apply hover:cursor-pointer;
+  /* Containers */
+  .wrapper {
+    @apply mx-auto px-8;
   }
 }
