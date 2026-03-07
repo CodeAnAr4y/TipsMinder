@@ -33,6 +33,12 @@
 
   /* typography */
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* size vars */
+  --content-width-xl: 80rem;
+  --content-width-lg: 64rem;
+  --content-width-md: 48rem;
+  --content-width-sm: 40rem;
 }
 
 @layer base {
@@ -69,9 +75,11 @@
   .table-row-hover {
     @apply hover:bg-[--color-ui-white-soft] transition-colors border-b border-[--color-ui-grey-light];
   }
-
   /* Containers */
   .wrapper {
     @apply w-full px-4 sm:px-8;
+  }
+  .narrow-wrapper {
+    @apply mx-auto w-full max-w-(--content-width-xl) lg:max-w-(--content-width-lg) md:max-w-(--content-width-md) sm:max-w-(--content-width-sm) px-4;
   }
 }
