@@ -29,9 +29,15 @@
   /* statuses */
   --color-status-error: #da3e52;
   --color-status-error-bg: #fbecee;
-  --color-status-error-light: #fff9f9;
-  --color-status-success: #048a81;
-  --color-status-success-bg: #ecf8f7;
+
+  --color-status-active: #048a81;
+  --color-status-active-bg: #ecf8f7;
+
+  --color-status-expired: #d73eda;
+  --color-status-expired-bg: #f4ecfb;
+
+  --color-status-suspended: #5f8a04;
+  --color-status-suspended-bg: #f3f8ec;
 
   /* gradients */
   --background-image-brand-gradient: linear-gradient(128deg, #eec595 0%, #f1804f 50%, #edd098 100%);
@@ -108,5 +114,28 @@
   .input-error {
     @apply border-status-error ring-1 ring-status-error focus:ring-status-error;
   }
-  
+
+  /* Table */
+  /* table Action btn */
+  .btn-action {
+    @apply bg-brand-gradient p-1.5 rounded-md hover:opacity-80 transition-opacity;
+  }
+
+  /* statuses */
+  .status-badge {
+    @apply px-4 py-2 rounded-full capitalize font-medium text-[14px];
+  }
+
+  .status-active {
+    @apply bg-status-active-bg text-status-active;
+  }
+  .status-error {
+    @apply bg-status-error-bg text-status-error;
+  }
+  .status-expired {
+    @apply bg-status-expired-bg text-status-expired;
+  }
+  .status-suspended {
+    @apply bg-status-suspended-bg text-status-suspended;
+  }
 }

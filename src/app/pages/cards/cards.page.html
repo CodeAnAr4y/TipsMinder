@@ -1,1 +1,42 @@
-<p>cards works!</p>
+<section class="narrow-wrapper py-8">
+  <h1 class="mb-6">Cards</h1>
+
+  <div class="module overflow-hidden p-0!">
+    <!-- Убираем внутренний отступ для таблицы -->
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="border-b border-ui-stroke bg-ui-white-f9">
+          <th class="p-4 font-medium text-ui-grey-41">Number</th>
+          <th class="p-4 font-medium text-ui-grey-41">Card number</th>
+          <th class="p-4 font-medium text-ui-grey-41">Status</th>
+          <th class="p-4 font-medium text-ui-grey-41">Valid till</th>
+          <th class="p-4 font-medium text-ui-grey-41 text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (card of cards(); track card.id) {
+        <tr class="border-b border-ui-stroke last:border-0 hover:bg-white transition-colors">
+          <td class="p-4 text-ui-grey-56">{{ card.id }}</td>
+          <td class="p-4 font-mono text-ui-grey-56">{{ card.cardNumber }}</td>
+          <td class="p-4">
+            <span class="status-badge" [ngClass]="'status-' + card.status">
+              {{ card.status }}
+            </span>
+          </td>
+          <td class="p-4 text-ui-grey-56">{{ card.cardExpire }}</td>
+          <td class="p-4">
+            <div class="flex justify-center gap-2">
+              <button class="btn-action" (click)="logoutCard(card.id)" title="Logout">
+                <img src="icons/logout.svg" alt="Logout" />
+              </button>
+              <button class="btn-action" (click)="blockCard(card.id)" title="Block">
+                <img src="icons/lock.svg" alt="Block" />
+              </button>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
