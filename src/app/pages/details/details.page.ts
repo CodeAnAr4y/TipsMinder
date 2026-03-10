@@ -13,15 +13,16 @@ import { CardService } from '../../services/card.service';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TransactionTable } from '../../components/transaction-table/transaction-table';
+import { TransactionChart } from "../../components/transaction-chart/transaction-chart";
 
 @Component({
   selector: 'app-details-page',
-  imports: [RouterLink, TransactionTable],
+  imports: [RouterLink, TransactionTable, TransactionChart],
   templateUrl: './details.page.html',
   styleUrl: './details.page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DetailsPage implements OnInit {
+export class DetailsPage{
   private cardService = inject(CardService);
   protected cardId = input.required<number, string>({ transform: numberAttribute });
 
@@ -29,8 +30,4 @@ export class DetailsPage implements OnInit {
     params: () => this.cardId(),
     stream: ({ params: id }) => this.cardService.getDataByCardId(id),
   });
-
-  ngOnInit(): void {
-    setTimeout(() => console.log(this.details.value()), 3000);
-  }
 }

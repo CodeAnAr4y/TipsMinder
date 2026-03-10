@@ -82,13 +82,10 @@
       </a>
 
       <!-- Chart Region -->
-      <div
+      <app-transaction-chart
         class="col-span-1 md:col-span-3 h-fit module-item border"
-        role="region"
-        aria-label="Transactions chart visualization"
-      >
-        <span class="text-gray-400 font-mono text-xs">[Chart Placeholder]</span>
-      </div>
+        [chartData]="details.value()?.transactions?.tipPrice"
+      ></app-transaction-chart>
 
       <!-- Transactions Table -->
       <app-transaction-table
