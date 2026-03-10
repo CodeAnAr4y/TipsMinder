@@ -18,4 +18,9 @@ export const routes: Routes = [
     path: 'cards',
     loadComponent: () => import('./pages/cards/cards.page').then((m) => m.CardsPage),
   },
+  {
+    path: '**',
+    redirectTo: 'cards',
+    pathMatch: 'full',
+  },
 ];
