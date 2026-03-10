@@ -13,16 +13,17 @@ import { CardService } from '../../services/card.service';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TransactionTable } from '../../components/transaction-table/transaction-table';
-import { TransactionChart } from "../../components/transaction-chart/transaction-chart";
+import { TransactionChart } from '../../components/transaction-chart/transaction-chart';
+import { CardNumberPipe } from '../../pipes/card-number-pipe';
 
 @Component({
   selector: 'app-details-page',
-  imports: [RouterLink, TransactionTable, TransactionChart],
+  imports: [RouterLink, TransactionTable, TransactionChart, CardNumberPipe],
   templateUrl: './details.page.html',
   styleUrl: './details.page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DetailsPage{
+export class DetailsPage {
   private cardService = inject(CardService);
   protected cardId = input.required<number, string>({ transform: numberAttribute });
 

@@ -24,7 +24,7 @@
       >
         <span class="module-item__title text-sm text-gray-500">Card</span>
         <span class="module-item__value font-medium truncate" [title]="data.user.bank.cardNumber">
-          {{ data.user.bank.cardNumber }}
+          {{ data.user.bank.cardNumber | cardNumber }}
         </span>
         <div class="module-item__action mt-auto flex items-center gap-2" aria-hidden="true">
           <span>See other cards</span>

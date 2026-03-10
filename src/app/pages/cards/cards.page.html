@@ -16,7 +16,7 @@
         @for (card of cards(); track card.id) {
         <tr class="cursor-pointer border-b border-ui-grey-light last:border-0 odd:bg-white hover:font-semibold" [routerLink]="['/details', card.id]">
           <td class="px-2 py-4 md:p-4 text-ui-grey-56">{{ card.id }}</td>
-          <td class="px-2 py-4 md:p-4 font-mono text-ui-grey-56">{{ card.cardNumber }}</td>
+          <td class="px-2 py-4 md:p-4 text-ui-grey-56">{{ card.cardNumber | cardNumber }}</td>
           <td class="px-2 py-4 md:p-4">
             <span class="status-badge" [ngClass]="'status-' + card.status">
               {{ card.status }}

@@ -3,10 +3,11 @@ import { NgClass } from '@angular/common';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { CardService } from '../../services/card.service';
 import { RouterLink } from '@angular/router';
+import { CardNumberPipe } from '../../pipes/card-number-pipe';
 
 @Component({
   selector: 'app-cards-page',
-  imports: [NgClass, RouterLink],
+  imports: [NgClass, RouterLink, CardNumberPipe],
   templateUrl: './cards.page.html',
   styleUrl: './cards.page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
