@@ -20,6 +20,8 @@
   --color-ui-white-soft: #fafafa;
   --color-ui-grey-41: #414141;
   --color-ui-white-f9: #f9f9f9;
+  --color-ui-item-stroke: #cecece;
+  --color-ui-grey-95: #959595;
 
   --color-ui-grey-56: #565656;
   --color-ui-grey-light: #c0c0c0;
@@ -49,9 +51,9 @@
 
   /* size vars */
   --content-width-xl: 80rem;
-  --content-width-lg: 64rem;
-  --content-width-md: 48rem;
-  --content-width-sm: 40rem;
+  --content-width-lg: 80rem;
+  --content-width-md: 64rem;
+  --content-width-sm: 48rem;
 }
 
 @layer base {
@@ -102,12 +104,16 @@
     @apply w-full px-4 sm:px-8;
   }
   .narrow-wrapper {
-    @apply mx-auto w-full max-w-(--content-width-xl) lg:max-w-(--content-width-lg) md:max-w-(--content-width-md) sm:max-w-(--content-width-sm) px-4;
+    @apply mx-auto w-full max-w-(--content-width-xl) lg:max-w-(--content-width-lg) md:max-w-(--content-width-md) sm:max-w-(--content-width-sm) px-4 xl:px-0;
   }
 
   /* content-modules */
   .module {
     @apply relative w-full border rounded-[10px] border-ui-stroke p-4 md:p-8 bg-ui-white-soft;
+  }
+
+  .module-item {
+    @apply border border-ui-item-stroke rounded-[5px] bg-white px-6 py-4;
   }
 
   /* forms */
@@ -137,5 +143,17 @@
   }
   .status-suspended {
     @apply bg-status-suspended-bg text-status-suspended;
+  }
+
+  /* Details */
+  .module-item__title {
+    @apply text-ui-grey-95 text-sm;
+  }
+  .module-item__value {
+    @apply text-base mb-1 capitalize;
+  }
+
+  .module-item__action {
+    @apply text-brand-orange text-sm hover:underline inline-flex gap-3;
   }
 }

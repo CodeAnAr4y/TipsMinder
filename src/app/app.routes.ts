@@ -11,7 +11,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/contract/contract.page').then((m) => m.ContractPage),
   },
   {
-    path: 'details/:id',
+    path: 'details/:cardId',
     loadComponent: () => import('./pages/details/details.page').then((m) => m.DetailsPage),
   },
   {

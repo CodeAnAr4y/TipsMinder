@@ -1,1 +1,110 @@
-<p>details works!</p>
+<section aria-labelledby="details-title" class="p-4">
+  <h1 id="details-title" class="mb-6 text-2xl font-bold">Details</h1>
+
+  <div class="module">
+    @if(details.value(); as data) {
+    <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-6 gap-4">
+      <!-- Username Card -->
+      <a
+        [routerLink]="['/details', cardId()]"
+        class="flex flex-col module-item group hover:bg-gray-50"
+      >
+        <span class="module-item__title text-sm text-gray-500">Username</span>
+        <span class="module-item__value font-medium">{{ data.user.username }}</span>
+        <div class="module-item__action mt-auto flex items-center gap-2" aria-hidden="true">
+          <span>Edit profile</span>
+          <img src="icons/arrow-link.svg" alt="" />
+        </div>
+      </a>
+
+      <!-- Card Number Card -->
+      <a
+        [routerLink]="['/details', cardId()]"
+        class="flex flex-col module-item group hover:bg-gray-50"
+      >
+        <span class="module-item__title text-sm text-gray-500">Card</span>
+        <span class="module-item__value font-medium truncate" [title]="data.user.bank.cardNumber">
+          {{ data.user.bank.cardNumber }}
+        </span>
+        <div class="module-item__action mt-auto flex items-center gap-2" aria-hidden="true">
+          <span>See other cards</span>
+          <img src="icons/arrow-link.svg" alt="" />
+        </div>
+      </a>
+
+      <!-- Tips Transferred Card -->
+      <a
+        [routerLink]="['/details', cardId()]"
+        class="flex flex-col module-item group hover:bg-gray-50"
+      >
+        <span class="module-item__title text-sm text-gray-500">Tips transferred</span>
+        <span class="module-item__value font-medium">{{ data.user.username }}</span>
+        <div class="module-item__action mt-auto flex items-center gap-2" aria-hidden="true">
+          <span>View details</span>
+          <img src="icons/arrow-link.svg" alt="" />
+        </div>
+      </a>
+      <!-- Tips Amount -->
+      <a
+        [routerLink]="['/details', cardId()]"
+        class="flex flex-col module-item group hover:bg-gray-50"
+      >
+        <span class="module-item__title text-sm text-gray-500">Tips amount</span>
+        <span class="module-item__value font-medium"><strong>10$</strong> (2030-12-31)</span>
+        <div class="module-item__action mt-auto flex items-center gap-2" aria-hidden="true">
+          <span>View details</span>
+          <img src="icons/arrow-link.svg" alt="" />
+        </div>
+      </a>
+      <!-- GPT paid -->
+      <a
+        [routerLink]="['/details', cardId()]"
+        class="flex flex-col module-item group hover:bg-gray-50"
+      >
+        <span class="module-item__title text-sm text-gray-500">GPT paid</span>
+        <span class="module-item__value font-medium"><strong>20$</strong> (2030-12-31)</span>
+        <div class="module-item__action mt-auto flex items-center gap-2" aria-hidden="true">
+          <span>View details</span>
+          <img src="icons/arrow-link.svg" alt="" />
+        </div>
+      </a>
+      <!-- Tips processingx -->
+      <a
+        [routerLink]="['/details', cardId()]"
+        class="flex flex-col module-item group hover:bg-gray-50"
+      >
+        <span class="module-item__title text-sm text-gray-500">Tips processing</span>
+        <span class="module-item__value font-medium"><strong>20$</strong> (2030-12-31)</span>
+        <div class="module-item__action mt-auto flex items-center gap-2" aria-hidden="true">
+          <span>View details</span>
+          <img src="icons/arrow-link.svg" alt="" />
+        </div>
+      </a>
+
+      <!-- Chart Region -->
+      <div
+        class="col-span-1 md:col-span-3 h-fit module-item border"
+        role="region"
+        aria-label="Transactions chart visualization"
+      >
+        <span class="text-gray-400 font-mono text-xs">[Chart Placeholder]</span>
+      </div>
+
+      <!-- Transactions Table -->
+      <app-transaction-table
+        class="col-span-1 md:col-span-3 module-item p-0 overflow-x-scroll md:overflow-x-auto border rounded-lg overflow-hidden"
+        [details]="details.value()"
+      ></app-transaction-table>
+    </div>
+    } @else if (details.isLoading()){
+    <div class="flex justify-center p-12" role="status" aria-busy="true">
+      <span class="animate-pulse">Loading data...</span>
+    </div>
+    } @else if (details.error()){
+    <div class="p-6 bg-red-50 text-red-700 rounded-md border border-red-200" role="alert">
+      <p class="font-bold">Error occured</p>
+      <p class="text-sm">Please try refreshing the page later.</p>
+    </div>
+    }
+  </div>
+</section>
