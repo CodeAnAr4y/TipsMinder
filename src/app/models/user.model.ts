@@ -43,7 +43,7 @@ export interface User {
   age: number;
   bank: BankCard;
   birthDate: string;
-  bloomGroup: string;
+  bloodGroup: string;
   company: Company;
   crypto: Crypto;
   ein: string;
@@ -52,7 +52,7 @@ export interface User {
   firstName: string;
   lastName: string;
   maidenName: string;
-  gender: 'female' | 'male';
+  gender: 'female' | 'male' | 'other';
   hair: { color: string; type: string };
   height: number;
   weight: number;
@@ -60,7 +60,7 @@ export interface User {
   ip: string;
   macAddress: string;
   phone: string;
-  role: string;
+  role: 'admin' | 'moderator' | 'user';
   ssn: string;
   university: string;
   userAgent: string;
