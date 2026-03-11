@@ -2,4 +2,19 @@
 <main class="grow narrow-wrapper mx-auto">
   <router-outlet></router-outlet>
 </main>
+<div class="relative">
+  <button
+    class="z-50 fixed right-4 bottom-4 rounded-full p-3 bg-status-active text-white flex items-center justify-center shadow-lg"
+    (click)="toggleChat($event)" 
+  >
+    <img src="icons/chat.svg" width="25" height="25" alt="Chat" />
+  </button>
+
+  @if(chatOpened()) {
+    <app-chat 
+      class="fixed right-4 bottom-20 z-50" 
+      (close)="chatOpened.set(false)">
+    </app-chat>
+  }
+</div>
 <app-footer></app-footer>
