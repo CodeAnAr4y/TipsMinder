@@ -10,13 +10,11 @@ Additionally, it includes an **extra real-time chat module implemented with WebS
 
 # Live Demo
 
-Deployment example (replace with your link):
+Deployment example:
 
-```
-https://your-project-name.vercel.app
-```
+https://69b17db5f3ab560a4e75e241--tipsminder.netlify.app
 
-The project deployed to GitHub Pages
+The project deployed to Netlify
 
 ---
 
