@@ -1,59 +1,248 @@
-# TipsMinder
+# Tips-Minder
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
+A modern **Single Page Application (SPA)** built with **Angular 21** using **Vite** as a build tool.
+The project demonstrates best practices for Angular architecture, asynchronous data handling, UI development with Tailwind CSS, and data visualization using ECharts.
 
-## Development server
+The application fetches data from the **DummyJSON API** and provides a structured dashboard with cards, tables, charts, and transaction details.
+Additionally, it includes an **extra real-time chat module implemented with WebSocket over ws.ifelse.io**.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+# Live Demo
+
+Deployment example (replace with your link):
+
+```
+https://your-project-name.vercel.app
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The project deployed to GitHub Pages
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+# Features
 
-```bash
-ng generate component component-name
+* Modern **Angular 21** architecture
+* **Vite** build system for fast development
+* **Tailwind CSS** UI styling
+* **ECharts** for data visualization
+* **DummyJSON API** integration
+* **Routing with Angular Router**
+* Modular and clean project structure
+* Strict TypeScript configuration
+* Real-time **WebSocket chat module**
+
+---
+
+# Application Modules
+
+### Dashboard (Cards)
+
+Displays summarized financial or transactional information.
+
+### Transaction Table
+
+Shows tabular transaction data retrieved from DummyJSON API.
+
+### Charts
+
+Interactive charts built using **ECharts** for visual analytics.
+
+### Details Page
+
+Detailed information about selected data entries.
+
+### Contract Page
+
+Additional structured page with contract signing form.
+
+### Chat Module (Extra)
+
+A real-time chat implemented with WebSocket.
+
+WebSocket endpoint:
+
+```
+wss://ws.ifelse.io
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+# Tech Stack
+
+Main technologies used in the project:
+
+* Angular 21
+* Vite
+* TypeScript
+* Tailwind CSS
+* ECharts
+* WebSocket API
+
+---
+
+# Dependencies
+
+Key project dependencies include:
+
+* `@angular/core`
+* `@angular/router`
+* `echarts`
+* `tailwindcss`
+* `rxjs`
+
+Development dependencies:
+
+* `vite`
+* `typescript`
+* `postcss`
+
+---
+
+# Project Structure
+
+Example of the main project structure:
+
+```
+src
+ ├── app
+ │   ├── components
+ │   │   ├── chat
+ │   │   ├── header
+ │   │   ├── footer
+ │   │   ├── transaction-chart
+ │   │   └── transaction-table
+ │   │
+ │   ├── pages
+ │   │   ├── cards
+ │   │   ├── contract
+ │   │   └── details
+ │   │
+ │   ├── services
+ │   ├── models
+ │   ├── pipes
+ ├── app.config.ts
+ ├── app.css
+ ├── app.html
+ ├── app.routes.ts
+ ├── app.spec.ts
+ ├── app.ts
+ ├── environments
+ ├── index.html
+ ├── styles.css
+ └── main.ts
 ```
 
-## Building
+The project follows **Angular best practices** with clear separation of:
 
-To build the project run:
+* components
+* pages
+* services
+* models
+* pipes
 
-```bash
-ng build
+---
+
+# Data Source
+
+Application data is fetched from:
+
+DummyJSON API
+
+```
+https://dummyjson.com
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+It provides mock data used for demonstrating:
 
-## Running unit tests
+* tables
+* card statistics
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+---
 
-```bash
-ng test
+# Installation
+
+Clone the repository:
+
+```
+git clone https://github.com/CodeAnAr4y/TipsMinder.git
 ```
 
-## Running end-to-end tests
+Navigate to the project directory:
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```
+cd tips-minder
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Install dependencies:
 
-## Additional Resources
+```
+npm install
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+# Running the Project
+
+Start the development server:
+
+```
+ng serve -o
+```
+
+The application will be available at:
+
+```
+http://localhost:4200
+```
+
+---
+
+# Build
+
+To create a production build:
+
+```
+npm run build
+```
+
+The build output will be generated in the `dist` folder.
+
+---
+
+# Code Quality
+
+The project follows strict coding rules:
+
+* Strong TypeScript typing
+* Angular best practices
+* Modular architecture
+* Clear and readable project structure
+
+---
+
+# Extra Feature – WebSocket Chat
+
+The application includes a simple real-time chat module that connects to a WebSocket server:
+
+```
+wss://ws.ifelse.io
+```
+
+Features:
+
+* Send messages
+* Receive real-time responses
+* Simple UI chat component
+
+---
+
+# Author
+
+Developer: Artur Sultanov
+
+GitHub:
+
+```
+https://github.com/CodeAnAr4y
+```

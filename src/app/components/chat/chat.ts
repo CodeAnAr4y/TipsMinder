@@ -13,6 +13,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { retry, timer } from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-chat',
@@ -46,7 +47,7 @@ export class Chat implements OnInit, OnDestroy {
 
   private connect() {
     this.socket$ = webSocket({
-      url: 'ws://ws.ifelse.io',
+      url: environment.WS_URL,
       deserializer: (msg) => msg.data,
       openObserver: { next: () => this.isConnected.set(true) },
       closeObserver: { next: () => this.isConnected.set(false) },
