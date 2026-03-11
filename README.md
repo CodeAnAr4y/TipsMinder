@@ -12,7 +12,7 @@ Additionally, it includes an **extra real-time chat module implemented with WebS
 
 Deployment example:
 
-https://69b17db5f3ab560a4e75e241--tipsminder.netlify.app
+https://tipsminder.netlify.app/
 
 The project deployed to Netlify
 
