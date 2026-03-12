@@ -1,3 +1,4 @@
+
 # Tips-Minder
 
 A modern **Single Page Application (SPA)** built with **Angular 21** using **Vite** as a build tool.
