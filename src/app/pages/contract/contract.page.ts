@@ -1,10 +1,20 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ContractForm } from '../../shared/models/contract-form.model';
 import { NgClass } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, startWith } from 'rxjs';
 import { RouterLink } from '@angular/router';
+
+export type ContractFormControls = {
+  [K in keyof ContractForm]: FormControl<K extends 'dateFrom' ? string | Date : string>;
+};
 
 @Component({
   selector: 'app-contract-page',
@@ -19,7 +29,7 @@ export class ContractPage {
 
   protected contractModel = signal<ContractForm | null>(null);
 
-  protected contractForm = this.fb.nonNullable.group({
+  protected contractForm: FormGroup<ContractFormControls> = this.fb.nonNullable.group({
     companyName: ['', [Validators.required]],
     personalCode: ['', [Validators.required, Validators.minLength(6)]],
     address: ['', [Validators.required]],
@@ -29,7 +39,7 @@ export class ContractPage {
     telephoneNumber: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{3}-\d{4}$/)]],
     bankAccountNumber: ['', [Validators.required, Validators.pattern(/^[A-Z]{3}\d+$/)]],
     dateFrom: [new Date().toISOString().split('T')[0], [Validators.required]],
-  });
+  }) as FormGroup<ContractFormControls>;
 
   protected formErrors = toSignal(
     this.contractForm.events.pipe(
@@ -46,13 +56,15 @@ export class ContractPage {
     { initialValue: {} as Record<string, boolean> }
   );
 
-  protected onSubmit() {
+  protected onSubmit(): void {
     if (this.contractForm.valid) {
       const rawValue = this.contractForm.getRawValue();
+
       const formValue: ContractForm = {
         ...rawValue,
         dateFrom: new Date(rawValue.dateFrom),
       };
+
       this.contractModel.set(formValue);
     } else {
       this.contractForm.markAllAsTouched();
