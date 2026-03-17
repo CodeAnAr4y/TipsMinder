@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { forkJoin, map, Observable, of } from 'rxjs';
-import { UsersResponse } from '../models/users-response.model';
-import { BankCard, Card, cardStatusesArray, User } from '../models/user.model';
-import { CartsResponse } from '../models/carts-response.model';
-import { Cart, Product } from '../models/cart.model';
-import { TransactionsData } from '../models/transaction.model';
+import { UsersResponse } from '../../shared/models/users-response.model';
+import { BankCard, Card, cardStatusesArray, User } from '../../shared/models/user.model';
+import { CartsResponse } from '../../shared/models/carts-response.model';
+import { Cart, Product } from '../../shared/models/cart.model';
+import { TransactionsData } from '../../shared/models/transaction.model';
+import { environment } from '../../../environments/environment';
 
 export interface DetailsResponse {
   user: { username: string; bank: BankCard };

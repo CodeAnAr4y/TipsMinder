@@ -13,7 +13,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { retry, timer } from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-chat',
@@ -24,25 +24,25 @@ import { environment } from '../../../environments/environment';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Chat implements OnInit, OnDestroy {
-  private elementRef = inject(ElementRef);
   private socket$!: WebSocketSubject<any>;
   newMessage = '';
 
-  close = output<void>();
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    const clickedInside = this.elementRef.nativeElement.contains(event.target);
-    if (!clickedInside) {
-      this.close.emit();
-    }
-  }
-
-  messages = signal<{ type: 'sent' | 'received'; text: string }[]>([]);
-  isConnected = signal(false);
+  public messages = signal<{ type: 'sent' | 'received'; text: string }[]>([]);
+  public isConnected = signal(false);
+  public chatOpened = signal(false);
 
   ngOnInit() {
     this.connect();
+  }
+
+  ngOnDestroy() {
+    if (this.socket$) {
+      this.socket$.complete();
+    }
+  }
+
+  public toggleChat() {
+    this.chatOpened.update((v) => !v);
   }
 
   private connect() {
@@ -79,12 +79,6 @@ export class Chat implements OnInit, OnDestroy {
       this.socket$.next(text);
       this.messages.update((prev) => [...prev, { type: 'sent', text }]);
       this.newMessage = '';
-    }
-  }
-
-  ngOnDestroy() {
-    if (this.socket$) {
-      this.socket$.complete();
     }
   }
 }

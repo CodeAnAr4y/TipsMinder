@@ -1,6 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, Signal } from '@angular/core';
-import { DetailsResponse } from '../../services/card.service';
+import { DetailsResponse } from '../../../../shared/services/card.service';
 
 @Component({
   selector: 'app-transaction-table',

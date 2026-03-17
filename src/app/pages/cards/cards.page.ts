@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { CardService } from '../../services/card.service';
 import { RouterLink } from '@angular/router';
-import { CardNumberPipe } from '../../pipes/card-number-pipe';
+import { CardNumberPipe } from '../../shared/pipes/card-number-pipe';
+import { CardService } from '../../shared/services/card.service';
 
 @Component({
   selector: 'app-cards-page',

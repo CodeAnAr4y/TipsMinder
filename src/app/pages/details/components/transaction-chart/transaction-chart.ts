@@ -8,7 +8,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { TipPrice } from '../../models/transaction.model';
+import { TipPrice } from '../../../../shared/models/transaction.model';
 import * as echarts from 'echarts';
 import { NgClass } from '@angular/common';
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ContractForm } from '../../models/contract-form.model';
+import { ContractForm } from '../../shared/models/contract-form.model';
 
 @Component({
   selector: 'app-contract-page',

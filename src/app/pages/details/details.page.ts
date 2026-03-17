@@ -9,12 +9,12 @@ import {
   resource,
   signal,
 } from '@angular/core';
-import { CardService } from '../../services/card.service';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
-import { TransactionTable } from '../../components/transaction-table/transaction-table';
-import { TransactionChart } from '../../components/transaction-chart/transaction-chart';
-import { CardNumberPipe } from '../../pipes/card-number-pipe';
+import { TransactionTable } from './components/transaction-table/transaction-table';
+import { TransactionChart } from './components/transaction-chart/transaction-chart';
+import { CardNumberPipe } from '../../shared/pipes/card-number-pipe';
+import { CardService } from '../../shared/services/card.service';
 
 @Component({
   selector: 'app-details-page',
