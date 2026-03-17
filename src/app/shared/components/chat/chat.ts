@@ -2,14 +2,12 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
-  HostListener,
-  inject,
-  OnDestroy,
   OnInit,
-  output,
   signal,
+  DestroyRef,
+  inject,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { retry, timer } from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
@@ -23,26 +21,17 @@ import { environment } from '../../../../environments/environment';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Chat implements OnInit, OnDestroy {
+export class Chat implements OnInit {
   private socket$!: WebSocketSubject<any>;
-  newMessage = '';
+  private destroyRef = inject(DestroyRef);
 
+  newMessage = '';
   public messages = signal<{ type: 'sent' | 'received'; text: string }[]>([]);
   public isConnected = signal(false);
   public chatOpened = signal(false);
 
   ngOnInit() {
     this.connect();
-  }
-
-  ngOnDestroy() {
-    if (this.socket$) {
-      this.socket$.complete();
-    }
-  }
-
-  public toggleChat() {
-    this.chatOpened.update((v) => !v);
   }
 
   private connect() {
@@ -55,6 +44,7 @@ export class Chat implements OnInit, OnDestroy {
 
     this.socket$
       .pipe(
+        takeUntilDestroyed(this.destroyRef),
         retry({
           delay: () => {
             this.isConnected.set(false);
@@ -70,7 +60,14 @@ export class Chat implements OnInit, OnDestroy {
           console.error('Connection error:', err);
           this.isConnected.set(false);
         },
+        complete: () => {
+          console.log('Socket stream completed');
+        },
       });
+  }
+
+  public toggleChat() {
+    this.chatOpened.update((v) => !v);
   }
 
   sendMessage() {
