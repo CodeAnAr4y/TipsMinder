@@ -16,7 +16,12 @@ export interface BankCard {
   iban: string;
 }
 
-export const cardStatusesArray = ['error', 'active', 'expired', 'suspended'];
+export enum cardStatusesArray {
+  ERROR,
+  ACTIVE,
+  EXPIRED,
+  SUSPENDED,
+}
 
 export type CardStatus = (typeof cardStatusesArray)[number];
 

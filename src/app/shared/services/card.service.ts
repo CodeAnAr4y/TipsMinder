@@ -16,9 +16,7 @@ export interface DetailsResponse {
 
 const transactionsFakeDataUrl = 'data/transactions.json';
 
-
 const apiUrl = environment.API_URL;
-
 
 @Injectable({
   providedIn: 'root',
@@ -59,8 +57,8 @@ export class CardService {
     });
   }
 
-  private getRandomStatus(): 'active' | 'error' | 'expired' | 'suspended' {
-    const randomIndex = Math.floor(Math.random() * this.statuses.length);
+  private getRandomStatus() {
+    const randomIndex = Math.floor(Math.random() * 4);
     return this.statuses[randomIndex];
   }
 }
