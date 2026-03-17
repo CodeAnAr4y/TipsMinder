@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContractForm } from '../../shared/models/contract-form.model';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-contract-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: './contract.page.html',
   styleUrl: './contract.page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

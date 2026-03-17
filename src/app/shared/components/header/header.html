@@ -30,7 +30,7 @@
     <button
       (click)="toggleMenu()"
       class="md:hidden p-2 z-50 transition-transform duration-300"
-      [class.rotate-90]="isMenuOpen()"
+      [ngClass]="isMenuOpen() ? 'rotate-90' : ''"
     >
       @if (isMenuOpen()) {
       <img src="icons/close.svg" alt="x" />
@@ -43,9 +43,7 @@
   <!-- Mobile Overlay -->
   <div
     class="fixed inset-0 bg-white z-40 flex flex-col pt-20 px-8 gap-6 transition-all duration-300 md:hidden"
-    [class.opacity-0]="!isMenuOpen()"
-    [class.pointer-events-none]="!isMenuOpen()"
-    [class.translate-x-full]="!isMenuOpen()"
+    [ngClass]="!isMenuOpen() ? 'opacity-0 pointer-events-none translate-x-full' : ''"
   >
     <a (click)="isMenuOpen.set(false)" routerLink="#" class="text-xl font-medium border-b pb-2"
       >About</a

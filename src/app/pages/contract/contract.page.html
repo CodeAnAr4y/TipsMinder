@@ -11,8 +11,10 @@
           <select
             formControlName="companyName"
             class="input-field appearance-none border-ui-input-stroke border-2 rounded-[10px] pr-10"
-            [class.input-error]="
+            [ngClass]="
               contractForm.get('companyName')?.invalid && contractForm.get('companyName')?.touched
+                ? 'input-error'
+                : ''
             "
           >
             <option value="" disabled>Select company</option>
@@ -31,9 +33,11 @@
           <select
             formControlName="terminalMonthlyFee"
             class="input-field appearance-none border-ui-input-stroke border-2 rounded-[10px] pr-10"
-            [class.input-error]="
+            [ngClass]="
               contractForm.get('terminalMonthlyFee')?.invalid &&
               contractForm.get('terminalMonthlyFee')?.touched
+                ? 'input-error'
+                : ''
             "
           >
             <option value="" disabled>Select fee</option>
@@ -53,8 +57,10 @@
           type="text"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
           placeholder="125091871"
-          [class.input-error]="
+          [ngClass]="
             contractForm.get('personalCode')?.invalid && contractForm.get('personalCode')?.touched
+              ? 'input-error'
+              : ''
           "
         />
       </div>
@@ -67,9 +73,11 @@
           type="text"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
           placeholder="909-569-6098"
-          [class.input-error]="
+          [ngClass]="
             contractForm.get('telephoneNumber')?.invalid &&
             contractForm.get('telephoneNumber')?.touched
+              ? 'input-error'
+              : ''
           "
         />
       </div>
@@ -82,8 +90,10 @@
           type="text"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
           placeholder="229 Gordon Street..."
-          [class.input-error]="
+          [ngClass]="
             contractForm.get('address')?.invalid && contractForm.get('address')?.touched
+              ? 'input-error'
+              : ''
           "
         />
       </div>
@@ -96,9 +106,11 @@
           type="text"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
           placeholder="BTO918282811291"
-          [class.input-error]="
+          [ngClass]="
             contractForm.get('bankAccountNumber')?.invalid &&
             contractForm.get('bankAccountNumber')?.touched
+              ? 'input-error'
+              : ''
           "
         />
       </div>
@@ -111,8 +123,10 @@
           type="email"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
           placeholder="jackson2_delight@gmal.com"
-          [class.input-error]="
+          [ngClass]="
             contractForm.get('email')?.invalid && contractForm.get('email')?.touched
+              ? 'input-error'
+              : ''
           "
         />
       </div>
@@ -124,8 +138,10 @@
           formControlName="dateFrom"
           type="date"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
-          [class.input-error]="
+          [ngClass]="
             contractForm.get('dateFrom')?.invalid && contractForm.get('dateFrom')?.touched
+              ? 'input-error'
+              : ''
           "
         />
       </div>
@@ -137,9 +153,11 @@
           <select
             formControlName="contractNumber"
             class="input-field appearance-none border-ui-input-stroke border-2 rounded-[10px] pr-10"
-            [class.input-error]="
+            [ngClass]="
               contractForm.get('contractNumber')?.invalid &&
               contractForm.get('contractNumber')?.touched
+                ? 'input-error'
+                : ''
             "
           >
             <option value="" disabled>Select contract number</option>
