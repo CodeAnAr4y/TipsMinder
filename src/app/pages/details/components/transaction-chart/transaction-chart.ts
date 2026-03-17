@@ -1,9 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   effect,
   ElementRef,
-  HostListener,
+  inject,
   input,
   signal,
   viewChild,
@@ -25,22 +26,35 @@ export class TransactionChart {
 
   private chartContainer = viewChild<ElementRef>('chartContainer');
   private chartInstance: echarts.ECharts | null = null;
+  private destroyRef = inject(DestroyRef);
 
-  @HostListener('window:resize')
-  onResize() {
-    this.chartInstance?.resize();
-  }
+  chartRenderEffect = effect(() => {
+    const data = this.chartData();
+    const container = this.chartContainer();
+    const period = this.activePeriod();
+
+    if (data && container) {
+      const values = period === 'days' ? data.days : data.months;
+      this.renderChart(values);
+    }
+  });
+
+  resizeChartEffect = effect((onCleanup) => {
+    const container = this.chartContainer()?.nativeElement;
+    if (!container) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      this.chartInstance?.resize();
+    });
+
+    resizeObserver.observe(container);
+
+    onCleanup(() => resizeObserver.disconnect());
+  });
 
   constructor() {
-    effect(() => {
-      const data = this.chartData();
-      const container = this.chartContainer();
-      const period = this.activePeriod();
-
-      if (data && container) {
-        const values = period === 'days' ? data.days : data.months;
-        this.renderChart(values);
-      }
+    this.destroyRef.onDestroy(() => {
+      this.chartInstance?.dispose();
     });
   }
 
@@ -62,7 +76,6 @@ export class TransactionChart {
         backgroundColor: '#fff',
         formatter: '{c} $',
         padding: [4, 8],
-        // textStyle: { color: '#333' },
         extraCssText: 'border-radius: 5px;',
         axisPointer: {
           type: 'line',
