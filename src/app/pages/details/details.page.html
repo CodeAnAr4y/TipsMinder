@@ -2,7 +2,7 @@
   <h1 class="mb-6">Details</h1>
 
   <div class="module">
-    @if(details.value(); as data) {
+    @if(details.value(); as detailsData) {
     <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-6 gap-4">
       <!-- Username Card -->
       <a
@@ -10,7 +10,7 @@
         class="flex flex-col module-item group hover:bg-gray-50"
       >
         <span class="module-item__title text-sm text-gray-500">Username</span>
-        <span class="module-item__value font-medium">{{ data.user.username }}</span>
+        <span class="module-item__value font-medium">{{ detailsData.user.username }}</span>
         <div class="module-item__action mt-auto flex items-center gap-2" aria-hidden="true">
           <span>Edit profile</span>
           <img src="icons/arrow-link.svg" alt="" />
@@ -23,8 +23,11 @@
         class="flex flex-col module-item group hover:bg-gray-50"
       >
         <span class="module-item__title text-sm text-gray-500">Card</span>
-        <span class="module-item__value font-medium truncate" [title]="data.user.bank.cardNumber">
-          {{ data.user.bank.cardNumber | cardNumber }}
+        <span
+          class="module-item__value font-medium truncate"
+          [title]="detailsData.user.bank.cardNumber"
+        >
+          {{ detailsData.user.bank.cardNumber | cardNumber }}
         </span>
         <div class="module-item__action mt-auto flex items-center gap-2" aria-hidden="true">
           <span>See other cards</span>
@@ -38,7 +41,7 @@
         class="flex flex-col module-item group hover:bg-gray-50"
       >
         <span class="module-item__title text-sm text-gray-500">Tips transferred</span>
-        <span class="module-item__value font-medium">{{ data.user.username }}</span>
+        <span class="module-item__value font-medium">{{ detailsData.user.username }}</span>
         <div class="module-item__action mt-auto flex items-center gap-2" aria-hidden="true">
           <span>View details</span>
           <img src="icons/arrow-link.svg" alt="" />
@@ -95,7 +98,7 @@
     </div>
     } @else if (details.isLoading()){
     <div class="flex justify-center p-12" role="status" aria-busy="true">
-      <span class="animate-pulse">Loading data...</span>
+      <span class="animate-pulse">Loading details...</span>
     </div>
     } @else if (details.error()){
     <div class="p-6 bg-red-50 text-red-700 rounded-md border border-red-200" role="alert">
