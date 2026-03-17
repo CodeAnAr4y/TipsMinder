@@ -9,7 +9,7 @@
           <select
             formControlName="companyName"
             class="input-field appearance-none border-ui-input-stroke border-2 rounded-[10px] pr-10"
-            [ngClass]="{ 'input-error': formErrors()['companyName'] }"
+            [ngClass]="{ 'input-error': formErrors().companyName}"
           >
             <option value="" disabled selected hidden>Select company</option>
             <option value="feastly">Feastly Delights</option>
@@ -26,7 +26,7 @@
           <select
             formControlName="terminalMonthlyFee"
             class="input-field appearance-none border-ui-input-stroke border-2 rounded-[10px] pr-10"
-            [ngClass]="{ 'input-error': formErrors()['terminalMonthlyFee'] }"
+            [ngClass]="{ 'input-error': formErrors().terminalMonthlyFee}"
           >
             <option value="" disabled selected hidden>Select fee</option>
             <option value="2719271819">2719271819</option>
@@ -44,7 +44,7 @@
           type="text"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
           placeholder="125091871"
-          [ngClass]="{ 'input-error': formErrors()['personalCode'] }"
+          [ngClass]="{ 'input-error': formErrors().personalCode}"
         />
       </div>
 
@@ -55,7 +55,7 @@
           type="text"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
           placeholder="909-569-6098"
-          [ngClass]="{ 'input-error': formErrors()['telephoneNumber'] }"
+          [ngClass]="{ 'input-error': formErrors().telephoneNumber }"
         />
       </div>
 
@@ -66,7 +66,7 @@
           type="text"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
           placeholder="229 Gordon Street..."
-          [ngClass]="{ 'input-error': formErrors()['address'] }"
+          [ngClass]="{ 'input-error': formErrors().address}"
         />
       </div>
 
@@ -77,7 +77,7 @@
           type="text"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
           placeholder="BTO918282811291"
-          [ngClass]="{ 'input-error': formErrors()['bankAccountNumber'] }"
+          [ngClass]="{ 'input-error': formErrors().bankAccountNumber}"
         />
       </div>
 
@@ -88,7 +88,7 @@
           type="email"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
           placeholder="jackson2_delight@gmal.com"
-          [ngClass]="{ 'input-error': formErrors()['email'] }"
+          [ngClass]="{ 'input-error': formErrors().email}"
         />
       </div>
 
@@ -98,7 +98,7 @@
           formControlName="dateFrom"
           type="date"
           class="input-field border-ui-input-stroke border-2 rounded-[10px]"
-          [ngClass]="{ 'input-error': formErrors()['dateFrom'] }"
+          [ngClass]="{ 'input-error': formErrors().dateFrom}"
         />
       </div>
 
@@ -108,7 +108,7 @@
           <select
             formControlName="contractNumber"
             class="input-field appearance-none border-ui-input-stroke border-2 rounded-[10px] pr-10"
-            [ngClass]="{ 'input-error': formErrors()['contractNumber'] }"
+            [ngClass]="{ 'input-error': formErrors().contractNumber }"
           >
             <option value="" disabled selected hidden>Select contract number</option>
             <option value="02929128119192189">02929128119192189</option>

@@ -16,6 +16,10 @@ export type ContractFormControls = {
   [K in keyof ContractForm]: FormControl<K extends 'dateFrom' ? string | Date : string>;
 };
 
+export type ContractFormErrors = {
+  [K in keyof ContractForm]: boolean;
+};
+
 @Component({
   selector: 'app-contract-page',
   standalone: true,
@@ -45,16 +49,19 @@ export class ContractPage {
     this.contractForm.events.pipe(
       startWith(null),
       map(() => {
-        const errors: Record<string, boolean> = {};
-        Object.keys(this.contractForm.controls).forEach((key) => {
+        const errors = {} as ContractFormErrors;
+        
+        (Object.keys(this.contractForm.controls) as Array<keyof ContractForm>).forEach((key) => {
           const control = this.contractForm.get(key);
           errors[key] = !!(control?.invalid && control?.touched);
         });
+        
         return errors;
       })
     ),
-    { initialValue: {} as Record<string, boolean> }
+    { initialValue: {} as ContractFormErrors }
   );
+  
 
   protected onSubmit(): void {
     if (this.contractForm.valid) {
