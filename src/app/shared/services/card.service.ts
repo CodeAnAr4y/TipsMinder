@@ -14,18 +14,20 @@ export interface DetailsResponse {
   transactions: TransactionsData;
 }
 
+const apiUrl = environment.API_URL;
+
+
 @Injectable({
   providedIn: 'root',
 })
 export class CardService {
-  private readonly apiUrl = environment.API_URL;
   private http = inject(HttpClient);
 
   private readonly statuses = cardStatusesArray;
   private transactionsFakeDataUrl = 'data/transactions.json';
 
   getCards(): Observable<Card[]> {
-    return this.http.get<UsersResponse>(`${this.apiUrl}/users`).pipe(
+    return this.http.get<UsersResponse>(`${apiUrl}/users`).pipe(
       map((resp) => {
         const rawCards: BankCard[] = resp.users.map((user: User) => user.bank);
         return rawCards.map((card, index) => ({
@@ -39,11 +41,11 @@ export class CardService {
 
   getDataByCardId(id: number): Observable<DetailsResponse> {
     const userData$ = this.http
-      .get<User>(`${this.apiUrl}/users/${id}`)
+      .get<User>(`${apiUrl}/users/${id}`)
       .pipe(map((user) => ({ username: user.username, bank: user.bank })));
 
     const products$ = this.http
-      .get<CartsResponse>(`${this.apiUrl}/carts/user/${id}`)
+      .get<CartsResponse>(`${apiUrl}/carts/user/${id}`)
       .pipe(map((resp: CartsResponse) => resp.carts.flatMap((cart: Cart) => cart.products)));
 
     const fakeData$ = this.http.get<TransactionsData>(this.transactionsFakeDataUrl);
