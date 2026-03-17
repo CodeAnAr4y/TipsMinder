@@ -2,11 +2,14 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContractForm } from '../../shared/models/contract-form.model';
 import { NgClass } from '@angular/common';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map, startWith } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-contract-page',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, RouterLink],
   templateUrl: './contract.page.html',
   styleUrl: './contract.page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,17 +17,7 @@ import { NgClass } from '@angular/common';
 export class ContractPage {
   private fb = inject(FormBuilder);
 
-  protected contractModel = signal<ContractForm>({
-    companyName: '',
-    personalCode: '',
-    address: '',
-    email: '',
-    contractNumber: '',
-    terminalMonthlyFee: '',
-    telephoneNumber: '',
-    bankAccountNumber: '',
-    dateFrom: new Date(),
-  });
+  protected contractModel = signal<ContractForm | null>(null);
 
   protected contractForm = this.fb.nonNullable.group({
     companyName: ['', [Validators.required]],
@@ -38,17 +31,29 @@ export class ContractPage {
     dateFrom: [new Date().toISOString().split('T')[0], [Validators.required]],
   });
 
+  protected formErrors = toSignal(
+    this.contractForm.events.pipe(
+      startWith(null),
+      map(() => {
+        const errors: Record<string, boolean> = {};
+        Object.keys(this.contractForm.controls).forEach((key) => {
+          const control = this.contractForm.get(key);
+          errors[key] = !!(control?.invalid && control?.touched);
+        });
+        return errors;
+      })
+    ),
+    { initialValue: {} as Record<string, boolean> }
+  );
+
   protected onSubmit() {
     if (this.contractForm.valid) {
       const rawValue = this.contractForm.getRawValue();
-  
       const formValue: ContractForm = {
         ...rawValue,
-        dateFrom: new Date(rawValue.dateFrom)
+        dateFrom: new Date(rawValue.dateFrom),
       };
-  
       this.contractModel.set(formValue);
-      console.log('Submitted:', this.contractModel());
     } else {
       this.contractForm.markAllAsTouched();
     }
