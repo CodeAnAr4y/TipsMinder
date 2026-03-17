@@ -14,6 +14,9 @@ export interface DetailsResponse {
   transactions: TransactionsData;
 }
 
+const transactionsFakeDataUrl = 'data/transactions.json';
+
+
 const apiUrl = environment.API_URL;
 
 
@@ -24,7 +27,6 @@ export class CardService {
   private http = inject(HttpClient);
 
   private readonly statuses = cardStatusesArray;
-  private transactionsFakeDataUrl = 'data/transactions.json';
 
   getCards(): Observable<Card[]> {
     return this.http.get<UsersResponse>(`${apiUrl}/users`).pipe(
@@ -48,7 +50,7 @@ export class CardService {
       .get<CartsResponse>(`${apiUrl}/carts/user/${id}`)
       .pipe(map((resp: CartsResponse) => resp.carts.flatMap((cart: Cart) => cart.products)));
 
-    const fakeData$ = this.http.get<TransactionsData>(this.transactionsFakeDataUrl);
+    const fakeData$ = this.http.get<TransactionsData>(transactionsFakeDataUrl);
 
     return forkJoin({
       user: userData$,

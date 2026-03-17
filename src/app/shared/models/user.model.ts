@@ -16,7 +16,7 @@ export interface BankCard {
   iban: string;
 }
 
-export const cardStatusesArray = ['error', 'active', 'expired', 'suspended'] as const;
+export const cardStatusesArray = ['error', 'active', 'expired', 'suspended'];
 
 export type CardStatus = (typeof cardStatusesArray)[number];
 
