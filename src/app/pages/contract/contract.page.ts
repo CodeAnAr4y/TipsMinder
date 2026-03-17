@@ -25,7 +25,6 @@ export type ContractFormErrors = {
   standalone: true,
   imports: [ReactiveFormsModule, NgClass, RouterLink],
   templateUrl: './contract.page.html',
-  styleUrl: './contract.page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContractPage {

@@ -9,7 +9,6 @@ import { CardService } from '../../shared/services/card.service';
   selector: 'app-cards-page',
   imports: [NgClass, RouterLink, CardNumberPipe],
   templateUrl: './cards.page.html',
-  styleUrl: './cards.page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardsPage {

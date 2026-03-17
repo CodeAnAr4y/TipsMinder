@@ -17,7 +17,6 @@ import { environment } from '../../../../environments/environment';
   selector: 'app-chat',
   imports: [CommonModule, FormsModule],
   templateUrl: './chat.html',
-  styleUrl: './chat.css',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -25,7 +24,7 @@ export class Chat implements OnInit {
   private socket$!: WebSocketSubject<any>;
   private destroyRef = inject(DestroyRef);
 
-  newMessage = '';
+  public newMessage = '';
   public messages = signal<{ type: 'sent' | 'received'; text: string }[]>([]);
   public isConnected = signal(false);
   public chatOpened = signal(false);
@@ -70,7 +69,7 @@ export class Chat implements OnInit {
     this.chatOpened.update((v) => !v);
   }
 
-  sendMessage() {
+  public sendMessage() {
     if (this.newMessage.trim() && this.isConnected()) {
       const text = this.newMessage;
       this.socket$.next(text);

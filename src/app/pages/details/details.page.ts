@@ -1,13 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   inject,
   input,
   numberAttribute,
-  OnInit,
-  resource,
-  signal,
 } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
@@ -20,7 +16,6 @@ import { CardService } from '../../shared/services/card.service';
   selector: 'app-details-page',
   imports: [RouterLink, TransactionTable, TransactionChart, CardNumberPipe],
   templateUrl: './details.page.html',
-  styleUrl: './details.page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DetailsPage {

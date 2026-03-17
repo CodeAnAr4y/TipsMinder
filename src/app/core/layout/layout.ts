@@ -8,7 +8,6 @@ import { Footer } from '../../shared/components/footer/footer';
   selector: 'app-layout',
   imports: [Chat, RouterOutlet, Header, Footer],
   templateUrl: './layout.html',
-  styleUrl: './layout.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Layout {

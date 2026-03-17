@@ -6,7 +6,6 @@ import { RouterLink } from '@angular/router';
   selector: 'app-header',
   imports: [RouterLink, NgClass],
   templateUrl: './header.html',
-  styleUrl: './header.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {

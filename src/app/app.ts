@@ -5,6 +5,5 @@ import { Layout } from './core/layout/layout';
   selector: 'app-root',
   imports: [Layout],
   templateUrl: './app.html',
-  styleUrl: './app.css',
 })
 export class App {}

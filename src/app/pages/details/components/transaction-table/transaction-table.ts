@@ -6,7 +6,6 @@ import { DetailsResponse } from '../../../../shared/services/card.service';
   selector: 'app-transaction-table',
   imports: [CurrencyPipe],
   templateUrl: './transaction-table.html',
-  styleUrl: './transaction-table.css',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
