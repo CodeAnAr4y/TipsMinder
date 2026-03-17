@@ -14,7 +14,10 @@
       </thead>
       <tbody>
         @for (card of cards(); track card.id) {
-        <tr class="cursor-pointer border-b border-ui-grey-light last:border-0 odd:bg-white hover:font-semibold" [routerLink]="['/details', card.id]">
+        <tr
+          class="cursor-pointer border-b border-ui-grey-light last:border-0 odd:bg-white hover:font-semibold"
+          [routerLink]="['/details', card.id]"
+        >
           <td class="px-2 py-4 md:p-4 text-ui-grey-56">{{ card.id }}</td>
           <td class="px-2 py-4 md:p-4 text-ui-grey-56">{{ card.cardNumber | cardNumber }}</td>
           <td class="px-2 py-4 md:p-4">
@@ -25,10 +28,10 @@
           <td class="px-2 py-4 md:p-4 text-ui-grey-56">{{ card.cardExpire }}</td>
           <td class="px-2 py-4 md:p-4">
             <div class="inline-flex gap-2">
-              <button class="btn-action" (click)="$event.stopPropagation(); logoutCard(card.id)" title="Logout">
+              <button class="btn-action" (click)="logoutCard($event, card.id)" title="Logout">
                 <img src="icons/logout.svg" alt="Logout" />
               </button>
-              <button class="btn-action" (click)="$event.stopPropagation(); blockCard(card.id)" title="Block">
+              <button class="btn-action" (click)="blockCard($event, card.id)" title="Block">
                 <img src="icons/lock.svg" alt="Block" />
               </button>
             </div>

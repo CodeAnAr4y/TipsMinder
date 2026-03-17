@@ -21,11 +21,13 @@ export class CardsPage {
 
   protected cards = computed(() => this.cardsResource.value() ?? []);
 
-  logoutCard(id: number) {
+  logoutCard(event: MouseEvent, id: number) {
+    event.stopPropagation();
     console.log('logged out card id: ' + id);
   }
 
-  blockCard(id: number) {
+  blockCard(event: MouseEvent, id: number) {
+    event.stopPropagation();
     console.log('card blocked with id: ' + id);
   }
 }
